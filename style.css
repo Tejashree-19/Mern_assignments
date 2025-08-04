@@ -1,0 +1,90 @@
+body{
+    font-family: Arial,sans-serif;
+    background-color: #1e1E24;
+    color: white;
+    margin:0;
+    padding: 20px;
+}
+.main-container{
+    width: 80%;
+    margin: auto;
+    background-color: #2d2d38;
+    padding: 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-size: 0;
+}
+
+.top-row{
+    width: 100%;
+    overflow: hidden;
+    margin-bottom:20px;
+    font-size: 0;
+}
+
+.left-box,.right-box{
+    width:48%;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #3c3c47;
+    padding: 20px;
+    border-radius: 10px;
+    columns: white;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.left-box{
+    margin-right: 4%;
+}
+
+.left-box,.right-box{
+    font-size: 16px;
+}
+.right-box{
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+    margin-right:0;
+}
+
+.profile-pic{
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #aaa;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height:100px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.icon-row span{
+    display:inline-block;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.bottom-row,bottom-box{
+    background-attachment: #3c3c47;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.social-icons {
+  float: right;
+  margin-top: -40px; 
+}
+.social-icons span {
+  margin-left: 15px;
+}
+.social-icons span{
+    display: inline-block;
+    margin: 5px 10px 0 0;
+    padding: 5px 10px;
+    background-color: #555;
+    border-radius: 20px;
+    text-align: right;
+    font-size: 14px;
+}
