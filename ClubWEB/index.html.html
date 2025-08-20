@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentblazer Club - Anurag University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #2e86c1;
+            --accent-color: #f39c12;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--accent-color);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+        
+        .btn-accent:hover {
+            background-color: #e67e22;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 15px auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            font-family:'Caveat','cursive';
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 25px;
+        }
+        
+        .nav-menu a {
+            color: var(--dark-color);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Leaders Section */
+        .leaders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .leader-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .leader-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .leader-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .leader-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .leader-card:hover .leader-img img {
+            transform: scale(1.1);
+        }
+        
+        .leader-info {
+            padding: 20px;
+        }
+        
+        .leader-info h3 {
+            margin-bottom: 5px;
+        }
+        
+        .leader-role {
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        /* Events Section */
+        .events-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: #eee;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .tab-btn:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .tab-btn:last-child {
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .tab-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .event-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .event-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .event-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .event-info {
+            padding: 20px;
+        }
+        
+        .event-date {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                box-shadow: var(--shadow);
+                transition: 0.3s;
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+                text-align: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Page specific styles */
+        .page {
+            display: none;
+            padding-top: 30px;
+            padding-bottom: 60px;
+            min-height: calc(100vh - 300px);
+        }
+        
+        #home-page {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+            <img src="https://agentblazer-club-au.github.io/launch/Agentblazer-logo.png" alt="Agentblazer Logo" class="w-auto h-16 md:h-24 object-contain">                 
+            <span class="logo" style="font-family:'Caveat','cursive';">club</span>            
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link" data-page="home-page">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about-page">About Us</a></li>
+                    <li><a href="#" class="nav-link" data-page="events-page">Events</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact-page">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page">
+        <section class="hero">
+            <div class="container">
+                <h2>Welcome to Agentblazer Club</h2>
+                <p>Anurag University's premier student organization for innovation, technology, and leadership development.</p>
+                <a href="#" class="btn btn-accent" data-page="about-page">Learn More</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="section-title">What We Do</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>The Agentblazer Club is a dynamic community of students passionate about technology, innovation, and leadership. We provide a platform for students to develop skills, network with industry professionals, and work on exciting projects.</p>
+                        <p>Our activities include workshops, hackathons, guest lectures, and community projects that help members gain practical experience and prepare for their future careers.</p>
+                        <a href="#" class="btn" data-page="events-page">View Our Events</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80" alt="Club members collaborating">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background-color: var(--light-color);">
+            <div class="container">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-img">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80" alt="Web Development Workshop">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-date">October 15, 2023 | 3:00 PM</div>
+                            <h3>Web Development Workshop</h3>
+                            <p>Learn the fundamentals of HTML, CSS, and JavaScript in this hands-on workshop.</p>
+                            <a href="#" class="btn" data-page="events-page">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-img">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80" alt="Tech Innovation Challenge">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-date">November 5, 2023 | 10:00 AM</div>
+                            <h3>Tech Innovation Challenge</h3>
+                            <p>Compete with other students to develop innovative solutions to real-world problems.</p>
+                            <a href="#" class="btn" data-page="events-page">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-img">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80" alt="Industry Networking">
+                        </div>
+                        <div class="event-info">
+                            <div class="event-date">November 20, 2023 | 4:30 PM</div>
+                            <h3>Industry Networking Event</h3>
+                            <p>Connect with professionals from leading tech companies and explore career opportunities.</p>
+                            <a href="#" class="btn" data-page="events-page">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page">
+        <section>
+            <div class="container">
+                <h2 class="section-title">About Agentblazer Club</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Our Mission</h3>
+                        <p>The Agentblazer Club is dedicated to fostering innovation, technical skills, and leadership qualities among students at Anurag University. We believe in learning by doing and provide opportunities for hands-on experience with cutting-edge technologies.</p>
+                        
+                        <h3>Our History</h3>
+                        <p>Founded in 2018, the Agentblazer Club started as a small group of technology enthusiasts. Over the years, we've grown to become one of the most active and recognized student organizations on campus, with over 200 members and numerous successful projects.</p>
+                        
+                        <h3>Our Values</h3>
+                        <p>We value innovation, collaboration, inclusivity, and continuous learning. Our club is a space where students from all backgrounds can come together to share ideas, learn new skills, and work on projects that make a difference.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80" alt="Club members at an event">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background-color: var(--light-color);">
+            <div class="container">
+                <h2 class="section-title">Club Leadership</h2>
+                <div class="leaders-grid">
+                    <div class="leader-card">
+                        <div class="leader-img">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80" alt="President">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Rahul Sharma</h3>
+                            <div class="leader-role">Club President</div>
+                            <p>Computer Science senior with a passion for AI and machine learning.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-img">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80" alt="Vice President">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Priya Patel</h3>
+                            <div class="leader-role">Vice President</div>
+                            <p>Leads our outreach efforts and event coordination.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-img">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80" alt="Tech Lead">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Arjun Kumar</h3>
+                            <div class="leader-role">Technical Lead</div>
+                            <p>Oversees all technical workshops and project development.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leader-card">
+                        <div class="leader-img">
+                            <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&q=80" alt="Marketing Lead">
+                        </div>
+                        <div class="leader-info">
+                            <h3>Neha Singh</h3>
+                            <div class="leader-role">Marketing Lead</div>
+                            <p>Manages our social media presence and promotional activities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Events Page -->
+    <div id="events-page" class="page">
+        <section>
+            <div class="container">
+                <h2 class="section-title">Club Events</h2>
+                
+                <div class="events-tabs">
+                    <button class="tab-btn active" data-tab="upcoming">Upcoming Events</button>
+                    <button class="tab-btn" data-tab="past">Past Events</button>
+                </div>
+                
+                <div id="upcoming-events" class="events-content">
+                    <div class="events-grid">
+                        <div class="event-card">
+                            <div class="event-img">
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80" alt="Web Development Workshop">
+                            </div>
+                            <div class="event-info">
+                                <div class="event-date">October 15, 2023 | 3:00 PM | Tech Building Room 302</div>
+                                <h3>Web Development Workshop</h3>
+                                <p>Join us for a hands-on workshop where you'll learn the fundamentals of web development. We'll cover HTML, CSS, and JavaScript basics. No prior experience required!</p>
+                                <p><strong>Open to all students</strong></p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-card">
+                            <div class="event-img">
+                                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80" alt="Tech Innovation Challenge">
+                            </div>
+                            <div class="event-info">
+                                <div class="event-date">November 5, 2023 | 10:00 AM | University Innovation Hub</div>
+                                <h3>Tech Innovation Challenge</h3>
+                                <p>Compete with other students to develop innovative solutions to real-world problems. Form teams of 3-4 and put your problem-solving skills to the test!</p>
+                                <p><strong>Registration required</strong></p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-card">
+                            <div class="event-img">
+                                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80" alt="Industry Networking">
+                            </div>
+                            <div class="event-info">
+                                <div class="event-date">November 20, 2023 | 4:30 PM | University Auditorium</div>
+                                <h3>Industry Networking Event</h3>
+                                <p>Connect with professionals from leading tech companies and explore career opportunities. Business casual attire recommended.</p>
+                                <p><strong>Open to all students</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="past-events" class="events-content" style="display: none;">
+                    <div class="events-grid">
+                        <div class="event-card">
+                            <div class="event-img">
+                                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80" alt="Annual Tech Fest">
+                            </div>
+                            <div class="event-info">
+                                <div class="event-date">September 10, 2023 | All Day | University Grounds</div>
+                                <h3>Annual Tech Fest 2023</h3>
+                                <p>Our biggest event of the year featured tech demonstrations, competitions, and guest speakers from industry leaders.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-card">
+                            <div class="event-img">
+                                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80" alt="Summer Coding Bootcamp">
+                            </div>
+                            <div class="event-info">
+                                <div class="event-date">July 5-15, 2023 | 9:00 AM-4:00 PM | Computer Lab 4</div>
+                                <h3>Summer Coding Bootcamp</h3>
+                                <p>An intensive 10-day program where participants learned Python programming and built their first applications.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-card">
+                            <div class="event-img">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80" alt="AI Conference">
+                            </div>
+                            <div class="event-info">
+                                <div class="event-date">May 20, 2023 | 10:00 AM-5:00 PM | Conference Center</div>
+                                <h3>AI & Machine Learning Conference</h3>
+                                <p>Experts from academia and industry shared insights on the latest developments in artificial intelligence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page">
+        <section>
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p>We'd love to hear from you! Reach out to us with questions, suggestions, or to get involved.</p>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Address</h4>
+                                <p>Anurag University<br>Student Activities Center<br>Hyderabad, Telangana 500088</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@agentblazerclub.edu.in</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Club Hours</h4>
+                                <p>Monday-Friday: 3:00 PM - 6:00 PM<br>Saturday: 10:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                                <div class="error-message" id="nameError">Please enter your name</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                                <div class="error-message" id="emailError">Please enter a valid email address</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" class="form-control" placeholder="Enter subject">
+                                <div class="error-message" id="subjectError">Please enter a subject</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" class="form-control" placeholder="Enter your message"></textarea>
+                                <div class="error-message" id="messageError">Please enter your message</div>
+                            </div>
+                            
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">Agentblazer Club</div>
+                    <p>Empowering students through technology, innovation, and leadership at Anurag University.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" data-page="home-page">Home</a></li>
+                        <li><a href="#" data-page="about-page">About Us</a></li>
+                        <li><a href="#" data-page="events-page">Events</a></li>
+                        <li><a href="#" data-page="contact-page">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Members Portal</a></li>
+                        <li><a href="#">Project Gallery</a></li>
+                        <li><a href="#">Learning Materials</a></li>
+                        <li><a href="#">Photo Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Join Us</h3>
+                    <ul>
+                        <li><a href="#">Membership Information</a></li>
+                        <li><a href="#">Upcoming Events</a></li>
+                        <li><a href="#">Volunteer Opportunities</a></li>
+                        <li><a href="#">Partner With Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Agentblazer Club, Anurag University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Page navigation
+            const navLinks = document.querySelectorAll('.nav-link, .footer-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.hasAttribute('data-page')) {
+                        e.preventDefault();
+                        const pageId = this.getAttribute('data-page');
+                        
+                        // Hide all pages
+                        document.querySelectorAll('.page').forEach(page => {
+                            page.style.display = 'none';
+                        });
+                        
+                        // Show the selected page
+                        document.getElementById(pageId).style.display = 'block';
+                        
+                        // Close mobile menu if open
+                        document.querySelector('.nav-menu').classList.remove('active');
+                        
+                        // Scroll to top
+                        window.scrollTo(0, 0);
+                    }
+                });
+            });
+            
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', function() {
+                document.querySelector('.nav-menu').classList.toggle('active');
+            });
+            
+            // Events tab functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById('upcoming-events').style.display = 
+                        tabId === 'upcoming' ? 'block' : 'none';
+                    document.getElementById('past-events').style.display = 
+                        tabId === 'past' ? 'block' : 'none';
+                });
+            });
+            
+            // Contact form validation
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                
+                // Validate name
+                const name = document.getElementById('name');
+                const nameError = document.getElementById('nameError');
+                if (name.value.trim() === '') {
+                    nameError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    nameError.style.display = 'none';
+                }
+                
+                // Validate email
+                const email = document.getElementById('email');
+                const emailError = document.getElementById('emailError');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email.value)) {
+                    emailError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    emailError.style.display = 'none';
+                }
+                
+                // Validate subject
+                const subject = document.getElementById('subject');
+                const subjectError = document.getElementById('subjectError');
+                if (subject.value.trim() === '') {
+                    subjectError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    subjectError.style.display = 'none';
+                }
+                
+                // Validate message
+                const message = document.getElementById('message');
+                const messageError = document.getElementById('messageError');
+                if (message.value.trim() === '') {
+                    messageError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    messageError.style.display = 'none';
+                }
+                
+                // If form is valid, show success message (in a real application, you would submit the form)
+                if (isValid) {
+                    alert('Thank you for your message! We will get back to you soon.');
+                    contactForm.reset();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
